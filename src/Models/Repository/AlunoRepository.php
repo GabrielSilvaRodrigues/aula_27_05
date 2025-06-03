@@ -1,7 +1,10 @@
 <?php
+
+namespace src\Models\Services;
 // Importa a classe de conexão e a entidade Aluno
 use src\Config\connection;
 use src\Models\Entity\Aluno;
+use PDO;
 
 // Repositório para operações CRUD com a entidade Aluno
 class AlunoRepository{
