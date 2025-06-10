@@ -4,16 +4,14 @@ use src\Repositories\AlunoRepository;
 use src\Models\Entity\Aluno;
 
 class AlunoServices{
-    private $aluno;
+    private $alunoRepository;
 
-    public function __construct($aluno){
-        $this->aluno = new AlunoRepository($aluno);
+    public function __construct(){
+        $this->alunoRepository = new AlunoRepository();
     }
-    public function criar(Aluno $aluno){
+    public function criar(string $nome, string $genero){
         $aluno = new Aluno($nome, $genero);
-        $this->aluno->save($aluno);
+        $this->alunoRepository->save($aluno);
     }
 }
-
-
 ?>
