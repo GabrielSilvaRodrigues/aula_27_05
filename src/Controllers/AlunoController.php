@@ -4,7 +4,7 @@ namespace src\Controllers;
 
 use src\Services\AlunoService;
 
-class AlunoControllers{
+class AlunoController{
     private $service;
 
     public function __construct(){
@@ -17,6 +17,10 @@ class AlunoControllers{
             $this->service->criar($data->nome, $data->genero)
         );
     }
+    public function mostrarFormulario(){
+        include_once __DIR__ . '/../../views/aluno/form.php';
+    }
+        
 }
 
 ?>
