@@ -2,13 +2,13 @@
 
 namespace src\Controllers;
 
-use src\Services\AlunosService;
+use src\Services\AlunoService;
 
 class AlunoControllers{
     private $service;
 
     public function __construct(){
-        $this->service = new AlunosService();
+        $this->service = new AlunoService();
     }
 
     public function criar(){

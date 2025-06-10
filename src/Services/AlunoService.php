@@ -1,9 +1,9 @@
 <?php
 namespace src\Services;
-use src\Repositories\AlunoRepository;
+use src\Models\Repository\AlunoRepository;
 use src\Models\Entity\Aluno;
 
-class AlunoServices{
+class AlunoService{
     private $alunoRepository;
 
     public function __construct(){

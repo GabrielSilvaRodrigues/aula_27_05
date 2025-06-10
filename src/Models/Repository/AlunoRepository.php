@@ -1,20 +1,17 @@
 <?php
 
-namespace src\Models\Services;
-// Importa a classe de conexão e a entidade Aluno
+namespace src\Models\Repository;
+
 use src\Config\connection;
 use src\Models\Entity\Aluno;
 use PDO;
 
-// Repositório para operações CRUD com a entidade Aluno
 class AlunoRepository{
     public $conn;
 
-    // Construtor: inicializa a conexão com o banco de dados
     public function __construct(){
-        // Cria uma nova instância da conexão com o banco de dados
-        $database = new conection(); // Atenção: o correto seria 'connection'
-        $this->conn = $database->getConnection(); // Obtém o objeto de conexão PDO
+        $database = new connection();
+        $this->conn = $database->getConnection();
     }
 
     // Salva um novo aluno no banco de dados

@@ -5,10 +5,10 @@ class Routes{
     private $routes = [];
 
     public function add($method, $path, $action){
-        $this.routhes []=[
-            'method'=>strtoupper($method),
-            'path'=> $path,
-            'action'=>$action
+        $this->routes[] = [
+            'method' => strtoupper($method),
+            'path' => $path,
+            'action' => $action
         ];
     }
     public function handleRequest(){
@@ -24,23 +24,10 @@ class Routes{
         foreach($this->routes as $r){
             $routePath = preg_replace('/\{[^\}]+\}/', '([^/]+)', $r['path']);
             $routePath = str_replace('/', '\/', $routePath);
-            if($r['method']  === $method && preg_match('/^' . $routePath . '$/', $path, $matches)){
+            if ($r['method'] === $method && preg_match("/^{$routePath}$/", $path, $matches)) {
                 array_shift($matches); // Remove o primeiro elemento que é o caminho
-                if(is_callable($r['action'])){
-                    call_user_func_array($r['action'], $matches);
-                } else {
-                    list($controller, $method) = explode('@', $r['action']);
-                    $controller = 'src\\Controllers\\' . $controller;
-                    if(class_exists($controller) && method_exists($controller, $method)){
-                        $instance = new $controller();
-                        call_user_func_array([$instance, $method], $matches);
-                    } else {
-                        http_response_code(404);
-                        echo "Controller or method not found.";
-                    }
-                }
+                call_user_func_array($r['action'], $matches);
                 return;
-                
             }
         }
     }
